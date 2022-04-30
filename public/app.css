@@ -130,3 +130,10 @@ body {
 	flex-direction: row;
 	gap: 10px;
 }
+
+#version {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 12px;
+}
