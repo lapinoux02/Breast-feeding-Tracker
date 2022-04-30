@@ -6,7 +6,7 @@
       "sizes": "any",
       "purpose": "any maskable"
     }],
-  "start_url": "https://breast-feeding-tracker-31ba4.web.app/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#353333",
   "orientation": "portrait",
