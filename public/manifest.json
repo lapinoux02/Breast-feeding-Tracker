@@ -1,0 +1,14 @@
+{
+  "name": "Breast-feeding Tracker",
+  "short_name": "BF Tracker",
+  "icons": [{
+      "src": "./assets/baby.svg",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }],
+  "start_url": "https://breast-feeding-tracker-31ba4.web.app/",
+  "display": "standalone",
+  "background_color": "#353333",
+  "orientation": "portrait",
+  "theme_color": "#353333"
+}
