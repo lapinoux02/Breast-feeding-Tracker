@@ -5,6 +5,22 @@ if ('serviceWorker' in navigator) {
 	});
 }
 
+// Firebase
+var firebaseConfig = {
+    apiKey: "AIzaSyCLTl3xX1RlWbzs3Z3TCAT2NFpUfWkv8ug",
+    authDomain: "breast-feeding-tracker-31ba4.firebaseapp.com",
+    databaseURL: "https://breast-feeding-tracker-31ba4-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "breast-feeding-tracker-31ba4",
+    storageBucket: "breast-feeding-tracker-31ba4.appspot.com",
+    messagingSenderId: "290308381002",
+    appId: "1:290308381002:web:25b4e9698fc683e4a209b3"
+};
+firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+var database = firebase.database();
+
+// app
 new Vue({
 	el: '#app',
 	data() {
@@ -14,6 +30,26 @@ new Vue({
 			log: [],
 			entry: undefined,
 			drawerClosed: true
+		}
+	},
+	async mounted() {
+		let snapshot = await firebase.database().ref().child('log').get()
+		if (snapshot.exists()) {
+			let data = snapshot.val()
+			this.log = data.map(d => {
+				let start = new Date()
+				start.setTime(d.start)
+				let end = new Date()
+				end.setTime(d.end)
+				return {
+					start,
+					end,
+					side: d.side
+				}
+			})
+		} else {
+			console.log('no data')
+			this.log = []
 		}
 	},
 	computed: {
@@ -43,7 +79,6 @@ new Vue({
 				}
 			})
 
-			console.log(days)
 			return days
 		}
 	},
@@ -78,6 +113,7 @@ new Vue({
 			if (!this.entry) return
 
 			this.entry.end = new Date()
+			firebase.database().ref(`log/${this.log.length}`).set({start: this.entry.start.getTime(), end: this.entry.end.getTime(), side: this.entry.side})
 			this.log.push(this.entry)
 			this.entry = undefined
 		},
