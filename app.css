@@ -1,0 +1,132 @@
+body {
+	margin: 0;
+	padding: 0;
+	--size: 10vmin;
+	--half-size: calc(var(--size) / 2);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100vw;
+    height: 100vh;
+}
+
+#no-breast-feeding {
+	cursor: pointer;
+	flex-grow: 1;
+    background-color: #f9f1eb;
+}
+
+#breast-feeding {
+	cursor: pointer;
+	flex-grow: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: stretch;
+	align-items: stretch;
+}
+
+#left-boob, #right-boob {
+	flex-grow: 1;
+}
+
+#left-boob {
+	background-color: #ff7b7b;
+}
+
+#right-boob {
+	background-color: #49cb49;
+}
+
+#baby {
+	position: absolute;
+	left: calc(50vw - var(--half-size));
+	top: 0;
+	width: var(--size);
+	height: var(--size);
+	background-image: url('assets/baby.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: all 0.3s;
+}
+
+#drawer {
+	background: white;
+	position: absolute;
+	height: calc(95vh - 30px);
+	top: 2.5vh;
+	border-bottom-right-radius: 7px;
+	border-top-right-radius: 7px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	left: 0;
+}
+
+.drawer-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 15px;
+	margin: 15px;
+	overflow: hidden;
+}
+
+#drawer.open {
+	/*left: 0;
+	right: unset;*/
+}
+
+#drawer.closed {
+	width: 0;
+	border-right: 0px solid black;
+	/*left: unset;
+	right: 100vw;*/
+}
+
+#drawer .drawer-handle-holder {
+	cursor: pointer;
+	background: white;
+	position: absolute;
+	left: 100%;
+	top: 15px;
+	height: 20px;
+	width: 20px;
+	padding: 4px;
+	border-bottom-right-radius: 7px;
+	border-top-right-radius: 7px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}
+
+#drawer .drawer-handle-holder .drawer-handle {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 20px;
+	width: 20px;
+}
+
+#drawer.closed .drawer-handle-holder .drawer-handle {
+	background-image: url('assets/hamburger-menu.svg');
+}
+
+#drawer.open .drawer-handle-holder .drawer-handle {
+	background-image: url('assets/cross.svg');
+}
+
+.log-by-day {
+	display: flex;
+	flex-direction: column;
+}
+
+.log {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
