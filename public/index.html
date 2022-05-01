@@ -15,10 +15,19 @@
 </head>
 <body>
 	<div id="app">
-		<div id="no-breast-feeding" @click="gotoNoBf"></div>
+		<div id="no-breast-feeding" @click="gotoNoBf">
+			<div class="empty-image image"></div>
+		</div>
 		<div id="breast-feeding">
-			<div id="left-boob" @click="gotoLeft"></div>
-			<div id="right-boob" @click="gotoRight"></div>
+			<div id="left-boob" @click="gotoLeft">
+				<div class="left-boob-image image"></div>
+			</div>
+			<div id="right-boob" @click="gotoRight">
+				<div class="right-boob-image image"></div>
+			</div>
+		</div>
+		<div id="baby-bottle" @click="gotoBabyBottle">
+			<div class="baby-bottle-image image"></div>
 		</div>
 		<div id="baby" :style="babyPosition"></div>
 		<div id="drawer" :class="[drawerClosed ? 'closed' : 'open']">
@@ -34,7 +43,7 @@
 			</div>
 			<div class="drawer-handle-holder" @click="toggleDrawer"><div class="drawer-handle"></div></div>
 		</div>
-		<div id="version">v1.0.1</div>
+		<div id="version">v1.1.0</div>
 	</div>
 </body>
 <script src="./app.js"></script>

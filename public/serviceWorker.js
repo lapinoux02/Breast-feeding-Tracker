@@ -6,7 +6,14 @@ const assets = [
 	'/app.css',
 	'/assets/baby.svg',
 	'/assets/cross.svg',
-	'/assets/hamburger-menu.svg'
+	'/assets/hamburger-menu.svg',
+	'/assets/biberon.svg',
+	'/assets/breastfeedingLeft.png',
+	'/assets/breastfeedingRight.png',
+	'/assets/breastRight.png',
+	'/assets/breastLeft.png',
+	'/assets/babyBottle.png',
+	'/assets/empty.png'
 ];
 
 self.addEventListener('install', installEvent => {

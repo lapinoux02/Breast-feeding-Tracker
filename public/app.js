@@ -16,7 +16,7 @@ new Vue({
 			sortedLog = []
 		}
 		return {
-			// 0: no bf, 1: left, 2: right
+			// 0: no bf, 1: left, 2: right, 3: baby bottle
 			position: 0,
 			log: storedLog.map(l => ({start: new Date(l.start), end: new Date(l.end), side: l.side})),
 			entry: undefined,
@@ -27,11 +27,13 @@ new Vue({
 		babyPosition() {
 			switch (this.position) {
 				case 0:
-					return 'top: calc(16.67vh - var(--half-size)); left: calc(50vw - var(--half-size))'
+					return 'top: calc(12.5vh - var(--half-size)); left: calc(50vw - var(--half-size));'
 				case 1:
-					return 'top: calc(66.67vh - var(--half-size)); left: calc(25vw - var(--half-size))'
+					return 'top: calc(50vh - var(--half-size)); left: calc(calc(25vw - var(--half-size)) + 2.5px); background-image: url("assets/breastfeedingLeft.png");'
 				case 2:
-					return 'top: calc(66.67vh - var(--half-size)); left: calc(75vw - var(--half-size))'
+					return 'top: calc(50vh - var(--half-size)); left: calc(calc(75vw - var(--half-size)) - 2.5px); background-image: url("assets/breastfeedingRight.png");'
+				case 3:
+					return 'top: calc(calc(87.5vh - var(--half-size)) - 10px); left: calc(50vw - var(--half-size)); background-image: url("assets/breastfeedingRight.png");'
 			}
 		},
 		logByDay() {
@@ -74,6 +76,13 @@ new Vue({
 			this.endEntry()
 			this.startEntry(2)
 		},
+		gotoBabyBottle() {
+			if (this.position === 3) return
+
+			this.position = 3
+			this.endEntry()
+			this.startEntry(3)
+		},
 		startEntry(side) {
 			this.entry = {
 				start: new Date(),
@@ -99,6 +108,7 @@ new Vue({
 			switch (pos) {
 				case 1: return 'Gauche'
 				case 2: return 'Droite'
+				case 3: return 'Biberon'
 			}
 		}
 	}

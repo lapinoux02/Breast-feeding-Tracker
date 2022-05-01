@@ -5,40 +5,64 @@ body {
 	--half-size: calc(var(--size) / 2);
 }
 
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
 #app {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
-    width: 100vw;
-    height: 100vh;
-}
-
-#no-breast-feeding {
-	cursor: pointer;
-	flex-grow: 1;
+    width: calc(100vw - 10px);
+    height: calc(100vh - 10px);
+    padding: 5px;
     background-color: #f9f1eb;
 }
 
+#no-breast-feeding, #baby-bottle {
+	cursor: pointer;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#no-breast-feeding {
+    background-color: #f9f1eb;
+}
+
+#baby-bottle {
+	background-color: #accef7;
+}
+
 #breast-feeding {
+	background: #f9f1eb;
+	padding: 5px 0;
 	cursor: pointer;
 	flex-grow: 2;
 	display: flex;
 	flex-direction: row;
 	justify-content: stretch;
 	align-items: stretch;
+	gap: 5px;
 }
 
 #left-boob, #right-boob {
 	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #left-boob {
-	background-color: #ff7b7b;
+	background-color: #ffc0c0;
 }
 
 #right-boob {
-	background-color: #49cb49;
+	background-color: #ffc0c0;
 }
 
 #baby {
@@ -51,7 +75,7 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	transition: all 0.3s;
+	transition: top 0.3s, left 0.3s;
 }
 
 #drawer {
@@ -65,6 +89,9 @@ body {
 	border-bottom: 1px solid black;
 	border-right: 1px solid black;
 	left: 0;
+	width: 300px;
+	max-width: calc(95vw - 30px);
+	transition: left 0.3s, width 0.3s;
 }
 
 .drawer-content {
@@ -73,19 +100,13 @@ body {
 	justify-content: flex-start;
 	gap: 15px;
 	margin: 15px;
-	overflow: hidden;
-}
-
-#drawer.open {
-	/*left: 0;
-	right: unset;*/
+    overflow-y: auto;
+    height: calc(95vh - 60px);
 }
 
 #drawer.closed {
-	width: 0;
+	left: -300px;
 	border-right: 0px solid black;
-	/*left: unset;
-	right: 100vw;*/
 }
 
 #drawer .drawer-handle-holder {
@@ -133,7 +154,31 @@ body {
 
 #version {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 5px;
+	right: 5px;
 	font-size: 12px;
+}
+
+.image {
+	width: var(--size);
+	height: var(--size);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.left-boob-image {
+	background-image: url('assets/breastLeft.png');
+}
+
+.right-boob-image {
+	background-image: url('assets/breastRight.png');
+}
+
+.baby-bottle-image {
+	background-image: url('assets/babyBottle.png');
+}
+
+.empty-image {
+	background-image: url('assets/empty.png');
 }
