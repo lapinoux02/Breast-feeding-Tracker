@@ -85,9 +85,7 @@ body {
 	top: 2.5vh;
 	border-bottom-right-radius: 7px;
 	border-top-right-radius: 7px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
+    box-shadow: 2px 2px 5px #767676;
 	left: 0;
 	width: 300px;
 	max-width: calc(95vw - 30px);
@@ -106,7 +104,7 @@ body {
 
 #drawer.closed {
 	left: -300px;
-	border-right: 0px solid black;
+    box-shadow: unset;
 }
 
 #drawer .drawer-handle-holder {
@@ -120,9 +118,7 @@ body {
 	padding: 4px;
 	border-bottom-right-radius: 7px;
 	border-top-right-radius: 7px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
+    box-shadow: 2px 2px 5px #767676;
 }
 
 #drawer .drawer-handle-holder .drawer-handle {
@@ -144,6 +140,11 @@ body {
 .log-by-day {
 	display: flex;
 	flex-direction: column;
+}
+
+.log-by-day-day {
+    color: #767676;
+    font-style: italic;
 }
 
 .log:nth-child(2n) {

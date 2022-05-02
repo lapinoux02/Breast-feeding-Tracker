@@ -11,15 +11,22 @@ new Vue({
 	data() {
 		try {
 			var storedLog = localStorage.getItem('log') && JSON.parse(localStorage.getItem('log')) || []
+			var storedEntry = localStorage.getItem('entry') && JSON.parse(localStorage.getItem('entry')) || undefined
+			var storedPosition = parseInt(localStorage.getItem('position') || 0)
+			console.log(storedPosition)
 		} catch(e) {
 			localStorage.removeItem('log')
-			sortedLog = []
+			localStorage.removeItem('entry')
+			localStorage.removeItem('position')
+			storedLog = []
+			storedEntry = undefined
+			storedPosition = 0
 		}
 		return {
 			// 0: no bf, 1: left, 2: right, 3: baby bottle
-			position: 0,
+			position: storedPosition,
 			log: storedLog.map(l => ({start: new Date(l.start), end: new Date(l.end), side: l.side})),
-			entry: undefined,
+			entry: storedEntry && {start: new Date(storedEntry.start), side: storedEntry.side},
 			drawerClosed: true
 		}
 	},
@@ -61,6 +68,7 @@ new Vue({
 
 			this.position = 0;
 			this.endEntry()
+			this.storePosition()
 		},
 		gotoLeft() {
 			if (this.position === 1) return
@@ -68,6 +76,7 @@ new Vue({
 			this.position = 1
 			this.endEntry()
 			this.startEntry(1)
+			this.storePosition()
 		},
 		gotoRight() {
 			if (this.position === 2) return
@@ -75,6 +84,7 @@ new Vue({
 			this.position = 2
 			this.endEntry()
 			this.startEntry(2)
+			this.storePosition()
 		},
 		gotoBabyBottle() {
 			if (this.position === 3) return
@@ -82,12 +92,17 @@ new Vue({
 			this.position = 3
 			this.endEntry()
 			this.startEntry(3)
+			this.storePosition()
+		},
+		storePosition() {
+			localStorage.setItem('position', this.position)
 		},
 		startEntry(side) {
 			this.entry = {
 				start: new Date(),
 				side
 			}
+			localStorage.setItem('entry', JSON.stringify(this.entry))
 		},
 		endEntry() {
 			if (!this.entry) return
@@ -95,7 +110,6 @@ new Vue({
 			this.entry.end = new Date()
 			this.log.push(this.entry)
 			localStorage.setItem('log', JSON.stringify(this.log))
-			console.log(document.cookie)
 			this.entry = undefined
 			Vue.nextTick(this.scrollTop())
 		},
@@ -105,7 +119,13 @@ new Vue({
 				this.scrollTop()
 			}
 		},
-		getDate(date) {
+		getDate({day, month}) {
+			let tmpDate = new Date()
+			tmpDate.setDate(day)
+			tmpDate.setMonth(month)
+			return new Intl.DateTimeFormat('fr-FR', {weekday: 'long', day: 'numeric', month: 'long'}).format(tmpDate)
+		},
+		getTime(date) {
 			return new Intl.DateTimeFormat('fr-FR', {hour: 'numeric', minute: 'numeric'}).format(date)
 		},
 		getPosition(pos) {

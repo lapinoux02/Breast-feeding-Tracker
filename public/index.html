@@ -33,12 +33,12 @@
 		<div id="drawer" :class="[drawerClosed ? 'closed' : 'open']">
 			<div id="drawer-content">
 				<div v-for="ld in logByDay" class="log-by-day">
-					<div class="log-by-day-day">{{`${ld.day}/${ld.month+1}`}}</div>
+					<div class="log-by-day-day">{{getDate(ld)}}</div>
 					<table>
 						<tr v-for="l in ld.log" class="log" :style="l.side === 3 && 'color: #73aaed' || 'color: #ff7070'">
-							<td>{{getDate(l.start)}}</td>
+							<td>{{getTime(l.start)}}</td>
 							<td>{{getPosition(l.side)}}</td>
-							<td>{{getDate(l.end)}}</td>
+							<td>{{getTime(l.end)}}</td>
 						</tr>
 					</table>
 				</div>
