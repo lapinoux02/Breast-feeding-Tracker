@@ -94,7 +94,7 @@ body {
 	transition: left 0.3s, width 0.3s;
 }
 
-.drawer-content {
+#drawer-content {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -146,10 +146,8 @@ body {
 	flex-direction: column;
 }
 
-.log {
-	display: flex;
-	flex-direction: row;
-	gap: 10px;
+.log:nth-child(2n) {
+	background: #f9f1eb;
 }
 
 #version {

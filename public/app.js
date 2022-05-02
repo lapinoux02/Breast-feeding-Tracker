@@ -40,7 +40,7 @@ new Vue({
 			if (!this.log.length) return
 
 			let days = []
-			let sortedLog = this.log.sort((a, b) => a.start.getTime() - b.start.getTime())
+			let sortedLog = this.log.sort((a, b) => b.start.getTime() - a.start.getTime())
 			let day = {day: sortedLog[0].start.getDate(), month: sortedLog[0].start.getMonth(), log: []}
 			days.push(day)
 			sortedLog.forEach(l => {
@@ -97,9 +97,13 @@ new Vue({
 			localStorage.setItem('log', JSON.stringify(this.log))
 			console.log(document.cookie)
 			this.entry = undefined
+			Vue.nextTick(this.scrollTop())
 		},
 		toggleDrawer() {
 			this.drawerClosed = !this.drawerClosed
+			if (!this.drawerClosed) {
+				this.scrollTop()
+			}
 		},
 		getDate(date) {
 			return new Intl.DateTimeFormat('fr-FR', {hour: 'numeric', minute: 'numeric'}).format(date)
@@ -110,6 +114,9 @@ new Vue({
 				case 2: return 'Droite'
 				case 3: return 'Biberon'
 			}
+		},
+		scrollTop() {
+			document.getElementById('drawer-content').scroll({top: -9999})
 		}
 	}
 })
