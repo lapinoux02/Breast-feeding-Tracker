@@ -10,6 +10,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="./app.css" />
+	<link rel="stylesheet" type="text/css" href="./icofont/icofont.min.css" />
 	<!-- Libraries -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
 </head>
@@ -43,7 +44,8 @@
 					</table>
 				</div>
 			</div>
-			<div class="drawer-handle-holder" @click="toggleDrawer"><div class="drawer-handle"></div></div>
+			<div class="drawer-handle-holder menu" @click="toggleDrawer"><i :class="['drawer-handle', drawerClosed ? 'icofont-navigation-menu' : 'icofont-arrow-left']"></i></div>
+			<div class="drawer-handle-holder reset" @click="reset"><i class="drawer-handle icofont-trash" style="color: #ef1f1f"></i></div>
 		</div>
 		<div id="version">v1.1.2</div>
 	</div>

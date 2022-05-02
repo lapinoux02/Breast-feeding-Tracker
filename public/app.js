@@ -137,6 +137,16 @@ new Vue({
 		},
 		scrollTop() {
 			document.getElementById('drawer-content').scroll({top: -9999})
+		},
+		reset() {
+			if (confirm('Souhaitez-vous supprimer les données ?')) {
+				localStorage.setItem('position', 0)
+				localStorage.setItem('log', [])
+				localStorage.setItem('entry', undefined)
+				this.log = []
+				this.entry = undefined
+				this.position = 0
+			}
 		}
 	}
 })

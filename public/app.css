@@ -111,8 +111,6 @@ body {
 	cursor: pointer;
 	background: white;
 	position: absolute;
-	left: 100%;
-	top: 15px;
 	height: 20px;
 	width: 20px;
 	padding: 4px;
@@ -121,20 +119,18 @@ body {
     box-shadow: 2px 2px 5px #767676;
 }
 
+#drawer .drawer-handle-holder.menu {
+	left: 100%;
+	top: 15px;
+}
+
+#drawer .drawer-handle-holder.reset {
+	left: 100%;
+	bottom: 35px;
+}
+
 #drawer .drawer-handle-holder .drawer-handle {
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 20px;
-	width: 20px;
-}
-
-#drawer.closed .drawer-handle-holder .drawer-handle {
-	background-image: url('assets/hamburger-menu.svg');
-}
-
-#drawer.open .drawer-handle-holder .drawer-handle {
-	background-image: url('assets/cross.svg');
+	font-size: 20px;
 }
 
 .log-by-day {

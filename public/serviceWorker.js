@@ -13,7 +13,14 @@ const assets = [
 	'/assets/breastRight.png',
 	'/assets/breastLeft.png',
 	'/assets/babyBottle.png',
-	'/assets/empty.png'
+	'/assets/empty.png',
+	'/icofont/fonts/icofont.eot',
+	'/icofont/fonts/icofont.svg',
+	'/icofont/fonts/icofont.ttf',
+	'/icofont/fonts/icofont.woff',
+	'/icofont/fonts/icofont.woff2',
+	'/icofont/icofont.css',
+	'/icofont/icofont.min.css'
 ];
 
 self.addEventListener('install', installEvent => {
