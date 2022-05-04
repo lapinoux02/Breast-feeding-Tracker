@@ -13,7 +13,6 @@ new Vue({
 			var storedLog = localStorage.getItem('log') && JSON.parse(localStorage.getItem('log')) || []
 			var storedEntry = localStorage.getItem('entry') && JSON.parse(localStorage.getItem('entry')) || undefined
 			var storedPosition = parseInt(localStorage.getItem('position') || 0)
-			console.log(storedPosition)
 		} catch(e) {
 			localStorage.removeItem('log')
 			localStorage.removeItem('entry')
@@ -27,7 +26,9 @@ new Vue({
 			position: storedPosition,
 			log: storedLog.map(l => ({start: new Date(l.start), end: new Date(l.end), side: l.side})),
 			entry: storedEntry && {start: new Date(storedEntry.start), side: storedEntry.side},
-			drawerClosed: true
+			drawerClosed: true,
+			entryOpen: false,
+			newEntry: undefined
 		}
 	},
 	computed: {
@@ -119,6 +120,14 @@ new Vue({
 				this.scrollTop()
 			}
 		},
+		openAddEntry() {
+			this.newEntry = {
+				start: new Date(),
+				side: 1,
+				end: new Date()
+			}
+			this.entryOpen = true
+		},
 		getDate({day, month}) {
 			let tmpDate = new Date()
 			tmpDate.setDate(day)
@@ -146,6 +155,14 @@ new Vue({
 				this.log = []
 				this.entry = undefined
 				this.position = 0
+			}
+		},
+		addNewEntry() {
+			if (this.newEntry) {
+				this.log.push(this.newEntry)
+				localStorage.setItem('log', JSON.stringify(this.log))
+				this.entry = undefined
+				Vue.nextTick(this.scrollTop())
 			}
 		}
 	}

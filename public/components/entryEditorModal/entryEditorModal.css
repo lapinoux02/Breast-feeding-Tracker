@@ -1,0 +1,26 @@
+#entry-editor-modal {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#entry-editor-content {
+	position: relative;
+	background: white;
+    padding: 18px 5px 5px 5px;
+}
+
+#entry-editor-content .icofont-ui-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 8px;
+    color: #767676;
+}

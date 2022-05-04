@@ -73,6 +73,26 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ee09";
 }
 
+.icofont-caret-down:before
+{
+  content: "\ea67";
+}
+
+.icofont-caret-left:before
+{
+  content: "\ea68";
+}
+
+.icofont-caret-right:before
+{
+  content: "\ea69";
+}
+
+.icofont-caret-up:before
+{
+  content: "\ea6a";
+}
+
 .icofont-xs
 {
   font-size: .5em;
