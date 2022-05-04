@@ -20,7 +20,11 @@ const assets = [
 	'/icofont/fonts/icofont.woff',
 	'/icofont/fonts/icofont.woff2',
 	'/icofont/icofont.css',
-	'/icofont/icofont.min.css'
+	'/icofont/icofont.min.css',
+	'/components/datetimePicker/datetimePicker.css',
+	'/components/datetimePicker/datetimePicker.js',
+	'/components/entryEditorModal/entryEditorModal.css',
+	'/components/entryEditorModal/entryEditorModal.js'
 ];
 
 self.addEventListener('install', installEvent => {
