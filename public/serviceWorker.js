@@ -24,7 +24,9 @@ const assets = [
 	'/components/datetimePicker/datetimePicker.css',
 	'/components/datetimePicker/datetimePicker.js',
 	'/components/entryEditorModal/entryEditorModal.css',
-	'/components/entryEditorModal/entryEditorModal.js'
+	'/components/entryEditorModal/entryEditorModal.js',
+	'/components/importModal/importModal.css',
+	'/components/importModal/importModal.js'
 ];
 
 self.addEventListener('install', installEvent => {

@@ -12,15 +12,18 @@
 	<link rel="stylesheet" type="text/css" href="./app.css" />
 	<link rel="stylesheet" type="text/css" href="./components/datetimePicker/datetimePicker.css" />
 	<link rel="stylesheet" type="text/css" href="./components/entryEditorModal/entryEditorModal.css" />
+	<link rel="stylesheet" type="text/css" href="./components/importModal/importModal.css" />
 	<link rel="stylesheet" type="text/css" href="./icofont/icofont.min.css" />
 	<!-- Libraries -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
 	<!-- App -->
 	<script src="./components/datetimePicker/datetimePicker.js"></script>
 	<script src="./components/entryEditorModal/entryEditorModal.js"></script>
+	<script src="./components/importModal/importModal.js"></script>
 <body>
 	<div id="app">
 		<entry-editor-modal v-if="entryOpen" v-model="newEntry" @close="entryOpen = false" @input="addNewEntry"></entry-editor-modal>
+		<import-modal v-if="importOpen" @close="importOpen = false" @input="addNewEntries"></import-modal>
 		<div id="no-breast-feeding" @click="gotoNoBf">
 			<div class="empty-image image"></div>
 		</div>
@@ -51,9 +54,10 @@
 			</div>
 			<div class="drawer-handle-holder menu" @click="toggleDrawer"><i :class="['drawer-handle', drawerClosed ? 'icofont-navigation-menu' : 'icofont-arrow-left']"></i></div>
 			<div class="drawer-handle-holder add-entry" @click="openAddEntry"><i class="drawer-handle icofont-ui-add"></i></div>
+			<div class="drawer-handle-holder import" @click="openImport"><i class="drawer-handle icofont-ui-add"></i></div>
 			<div class="drawer-handle-holder reset" @click="reset"><i class="drawer-handle icofont-trash" style="color: #ef1f1f"></i></div>
 		</div>
-		<div id="version">v1.3.2</div>
+		<div id="version">v1.4.0</div>
 	</div>
 </body>
 <script src="./app.js"></script>

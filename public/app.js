@@ -28,7 +28,8 @@ new Vue({
 			entry: storedEntry && {start: new Date(storedEntry.start), side: storedEntry.side},
 			drawerClosed: true,
 			entryOpen: false,
-			newEntry: undefined
+			newEntry: undefined,
+			importOpen: false
 		}
 	},
 	computed: {
@@ -164,6 +165,15 @@ new Vue({
 				this.entry = undefined
 				Vue.nextTick(this.scrollTop())
 			}
+		},
+		openImport() {
+			this.importOpen = true
+		},
+		addNewEntries(entries) {
+			this.log.push(...entries)
+			localStorage.setItem('log', JSON.stringify(this.log))
+			this.entry = undefined
+			Vue.nextTick(this.scrollTop())
 		}
 	}
 })

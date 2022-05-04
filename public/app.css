@@ -134,6 +134,11 @@ body {
 	top: 50px;
 }
 
+#drawer .drawer-handle-holder.import {
+	left: 100%;
+	top: 85px;
+}
+
 #drawer .drawer-handle-holder .drawer-handle {
 	font-size: 20px;
 }
